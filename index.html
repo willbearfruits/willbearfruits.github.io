@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Serious S.H.I.T. · instruments that are a bit wrong</title>
+<meta name="description" content="Noise boxes, pocket instruments and strange software by Yaniv Schonfeld (Willbear), made in Haifa. Most of it open source, some of it for sale, all of it teachable.">
+<meta property="og:title" content="Serious S.H.I.T.">
+<meta property="og:description" content="Noise boxes, pocket instruments and strange software made in Haifa.">
+<meta property="og:image" content="https://willbearfruits.github.io/img/fuzilator.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#e9e8e2; --paper:#f3f2ed; --ink:#151412; --muted:#5f5e57; --rule:#151412; --soft:#cfcdc4;
+  --accent:#c7412b;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#141412;--paper:#1c1c19;--ink:#e7e5dc;--muted:#a09e94;--rule:#e7e5dc;--soft:#3a3934}
+}
+:root[data-theme="dark"]{--bg:#141412;--paper:#1c1c19;--ink:#e7e5dc;--muted:#a09e94;--rule:#e7e5dc;--soft:#3a3934}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--sans)}
+img,video{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:13px}
+header.top .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;min-height:48px;flex-wrap:wrap}
+header.top a{text-decoration:none}
+.brand{font-weight:600;letter-spacing:.12em}
+header.top nav{display:flex;gap:16px;flex-wrap:wrap}
+.hero{padding:48px 0 32px;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.hero h1{font-family:var(--mono);font-weight:600;font-size:clamp(40px,7vw,72px);letter-spacing:.01em;line-height:.95;margin:0 0 18px}
+.lead{font-size:clamp(19px,2.4vw,22px);line-height:1.45;margin:0 0 12px;max-width:28em}
+.small{color:var(--muted);font-size:15px;margin:0 0 22px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:var(--mono);font-size:14px;border:1px solid var(--rule);padding:10px 16px;text-decoration:none;background:var(--paper);color:var(--ink);display:inline-block}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.frame{border:1px solid var(--rule);background:var(--paper);padding:10px}
+.frame figcaption{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:8px}
+section{padding:40px 0;border-top:1px solid var(--soft)}
+h2{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 22px;font-weight:600}
+h2::before{content:"";display:inline-block;width:10px;height:10px;background:var(--accent);margin-right:10px;vertical-align:1px}
+h3{font-family:var(--mono);font-size:17px;margin:0 0 6px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.card p{margin:0;color:var(--muted)}
+.card{border-top:2px solid var(--ink);padding-top:12px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.shots figure{margin:0}
+.get{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.get .box{border:1px solid var(--rule);background:var(--paper);padding:20px}
+.get .box p{margin:0 0 14px}
+.get .box .price{font-family:var(--mono);font-size:15px;color:var(--accent);margin:0 0 10px}
+.prose{max-width:44em}
+.prose p{margin:0 0 14px}
+pre,code{font-family:var(--mono);font-size:14px}
+pre{background:var(--paper);border:1px solid var(--soft);padding:14px;overflow-x:auto}
+.status{font-family:var(--mono);font-size:14px;border-left:3px solid var(--accent);padding:6px 0 6px 14px;max-width:44em}
+.video{aspect-ratio:16/9;width:100%;border:1px solid var(--rule);background:#000}
+footer{border-top:1px solid var(--rule);margin-top:24px;padding:28px 0 48px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{color:var(--ink)}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;padding-top:28px;gap:24px}
+  section{padding:30px 0}
+}
+
+.hero.hub{grid-template-columns:1.25fr .75fr}
+.hub-note{font-family:var(--mono);font-size:13px;color:var(--muted);border:1px dashed var(--soft);padding:16px;margin:0}
+.hub-note b{color:var(--ink)}
+.things{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:26px}
+.things.four{grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:20px}
+.things.four h3{font-size:19px}
+.things.four p{font-size:15px}
+.thing{display:flex;flex-direction:column;border:1px solid var(--rule);background:var(--paper)}
+.thing .pic{display:block;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--rule);background:#0b0b0a}
+.thing .pic img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.thing:hover .pic img{transform:scale(1.03)}
+.thing .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.thing h3{font-size:22px;margin:0;border-left:4px solid var(--c,var(--accent));padding-left:10px;line-height:1.1}
+.thing p{margin:0;color:var(--muted);font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--soft);padding:3px 7px;color:var(--muted)}
+.tag.buy{border-color:var(--accent);color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links .btn{font-size:13px;padding:7px 12px}
+.both{margin-top:26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;border-left:3px solid var(--accent);padding:6px 0 6px 18px;max-width:52em}
+.both strong{font-family:var(--mono)}
+.intro{max-width:40em;color:var(--muted);margin:-8px 0 26px}
+@media (max-width:760px){.hero.hub{grid-template-columns:1fr}.both{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./">SERIOUS S.H.I.T.</a>
+  <nav>
+    <a href="#hold">Hardware</a>
+    <a href="#run">Software</a>
+    <a href="#learn">Workshops</a>
+    <a href="#support">Support</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero hub">
+    <div>
+      <p class="kicker">Haifa · instruments · tools · workshops</p>
+      <h1>Instruments that are a bit wrong.</h1>
+      <p class="lead">I'm Yaniv Schonfeld, a.k.a. Willbear. I build noise boxes, pocket instruments and strange software, and I teach people to build their own.</p>
+      <p class="small">Most of it is open source. Some of it you can buy. All of it you can learn to make.</p>
+      <div class="actions">
+        <a class="btn solid" href="#hold">See the things</a>
+        <a class="btn" href="https://www.patreon.com/Seriousshit">Support on Patreon</a>
+      </div>
+    </div>
+    <p class="hub-note"><b>Launch week.</b> Seven projects, one page. A video for each one is on its way: follow on <a href="https://www.instagram.com/shitisizers/">Instagram</a> or <a href="https://www.youtube.com/@Serioushit">YouTube</a> to catch them.</p>
+  </div>
+
+  <section id="hold">
+    <h2>Things you can hold</h2>
+    <p class="intro">Built by hand in Haifa. Ask and I'll tell you what's on the bench, or come and build one yourself.</p>
+    <div class="things">
+      <article class="thing" style="--c:#c7412b">
+        <a class="pic" href="https://willbearfruits.github.io/fuzilator-pukemachine/"><img src="img/fuzilator.jpg" width="960" height="600" loading="lazy" alt="The Fuzilator PukeMachine, a black pedal with a hand-engraved panel"></a>
+        <div class="body">
+          <h3>Fuzilator PukeMachine</h3>
+          <p>A handmade fuzz and noise box: two gain stages, a feedback loop and a contact microphone inside. Plug in a guitar, a synth, or nothing at all.</p>
+          <div class="links"><a class="btn solid" href="https://willbearfruits.github.io/fuzilator-pukemachine/">See it</a><a class="btn" href="https://www.youtube.com/watch?v=DPi9fYsc-MU">Watch</a></div>
+          <div class="tags"><span class="tag buy">For sale</span><span class="tag">Run of 13</span></div>
+        </div>
+      </article>
+      <article class="thing" style="--c:#d98b1b">
+        <a class="pic" href="https://willbearfruits.github.io/twofold/"><img src="img/twofold.jpg" width="960" height="600" loading="lazy" alt="Four of TWOFOLD's screens: volume, EQ, reverb and saturation"></a>
+        <div class="body">
+          <h3>TWOFOLD</h3>
+          <p>A small USB sound card: two in, two out, an EQ, effects and a screen. No drivers. Turn it with one knob or from your browser.</p>
+          <div class="links"><a class="btn solid" href="https://willbearfruits.github.io/twofold/">See it</a><a class="btn" href="https://github.com/willbearfruits/twofold">Source</a></div>
+          <div class="tags"><span class="tag buy">For sale</span><span class="tag buy">Workshop</span><span class="tag">Open source</span></div>
+        </div>
+      </article>
+      <article class="thing" style="--c:#c7412b">
+        <a class="pic" href="https://willbearfruits.github.io/samplooler/"><img src="img/samplooler.jpg" width="960" height="600" loading="lazy" alt="The Samplooler board with its screen showing a loop playing backwards"></a>
+        <div class="body">
+          <h3>Samplooler</h3>
+          <p>A small looper you play by tilting it. Hold the button and make a sound; let go and it loops. Tip it forward to speed up, back to reverse.</p>
+          <div class="links"><a class="btn solid" href="https://willbearfruits.github.io/samplooler/">See it</a><a class="btn" href="https://github.com/willbearfruits/samplooler">Source</a></div>
+          <div class="tags"><span class="tag buy">For sale</span><span class="tag buy">Workshop</span><span class="tag">Open source</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="both">
+      <strong>1 board = 2 instruments</strong>
+      <span>TWOFOLD and Samplooler run on the same ESP32 board. Flash it as one, flash it as the other. Build it in the <a href="#learn">ESP32 workshop</a> and go home with both.</span>
+    </div>
+  </section>
+
+  <section id="run">
+    <h2>Things you can run</h2>
+    <p class="intro">Free to download, free to change. On an old PC, a pocket handheld, a Raspberry Pi or your browser.</p>
+    <div class="things four">
+      <article class="thing" style="--c:#ffb454">
+        <a class="pic" href="https://willbearfruits.github.io/bare/"><img src="img/bare.jpg" width="960" height="600" loading="lazy" alt="BARE!'s PLAY page, an omnichord on the screen"></a>
+        <div class="body">
+          <h3>BARE!</h3>
+          <p>A synthesizer that is the whole computer. It boots from a USB stick straight into the instrument, no operating system, on PCs from the late 90s to now.</p>
+          <div class="links"><a class="btn solid" href="https://willbearfruits.github.io/bare/">See it</a><a class="btn" href="https://github.com/willbearfruits/bare/releases">Download</a></div>
+          <div class="tags"><span class="tag">Free download</span><span class="tag">Open source</span></div>
+        </div>
+      </article>
+      <article class="thing" style="--c:#2f8f5b">
+        <a class="pic" href="https://willbearfruits.github.io/r36s-rhythm/"><img src="img/rhythm.jpg" width="960" height="600" loading="lazy" alt="RHYTHM's pattern page: twelve coloured drum tracks and a chopped break"></a>
+        <div class="body">
+          <h3>RHYTHM</h3>
+          <p>A drum machine and sampler for the R36S, a pocket game handheld. Twelve tracks, slices, synth drums and a perform page, on the bus.</p>
+          <div class="links"><a class="btn solid" href="https://willbearfruits.github.io/r36s-rhythm/">See it</a><a class="btn" href="https://github.com/willbearfruits/r36s-rhythm/releases">Download</a></div>
+          <div class="tags"><span class="tag">Free download</span><span class="tag">Open source</span></div>
+        </div>
+      </article>
+      <article class="thing" style="--c:#b4407a">
+        <a class="pic" href="https://willbearfruits.github.io/ring/"><img src="img/ring.jpg" width="960" height="600" loading="lazy" alt="RING's round pages on a touchscreen"></a>
+        <div class="body">
+          <h3>RING</h3>
+          <p>A round touch instrument for a Raspberry Pi. It listens to what you play, finds the beat, and gives you pads, chords, drums and loops on top.</p>
+          <div class="links"><a class="btn solid" href="https://willbearfruits.github.io/ring/">See it</a><a class="btn" href="https://github.com/willbearfruits/ring">Source</a></div>
+          <div class="tags"><span class="tag">Testing now</span><span class="tag">Open source</span></div>
+        </div>
+      </article>
+      <article class="thing" style="--c:#33e0ff">
+        <a class="pic" href="https://willbearfruits.github.io/wrong/"><img src="img/wrong.jpg" width="960" height="600" loading="lazy" alt="Wikipedia in WRONG: broken JPEGs and zalgo text"></a>
+        <div class="body">
+          <h3>WRONG</h3>
+          <p>A web browser that's wrong on purpose. It byte-flips images, pours zalgo into text and datamoshes video as you browse.</p>
+          <div class="links"><a class="btn solid" href="https://willbearfruits.github.io/wrong/">See it</a><a class="btn" href="https://github.com/willbearfruits/wrong/releases">Download</a></div>
+          <div class="tags"><span class="tag">Free download</span><span class="tag">Open source</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="learn">
+    <h2>Workshops</h2>
+    <div class="get">
+      <div class="box">
+        <h3>Build an ESP32 instrument</h3>
+        <p class="price">7 meetings · MEZO, Haifa · 2,200 ₪ · kit included</p>
+        <p>A small computer becomes an instrument. Wire the screen, the knob and the sound, solder it, box it, and leave with a board that runs TWOFOLD and Samplooler.</p>
+        <a class="btn solid" href="https://willbearfruits.github.io/serious-shit/workshop-esp32.html">The workshop</a>
+        <a class="btn" href="mailto:Dogme84@gmail.com?subject=ESP32%20workshop">Ask about dates</a>
+      </div>
+      <div class="box">
+        <h3>Build a guitar or bass pedal</h3>
+        <p class="price">8 meetings · MEZO, Haifa · 2,200 ₪ · kit included</p>
+        <p>From a handful of parts to a fuzz or distortion you made yourself: the circuit, the soldering, the enclosure.</p>
+        <a class="btn solid" href="https://willbearfruits.github.io/serious-shit/workshop-pedal.html">The workshop</a>
+        <a class="btn" href="mailto:Dogme84@gmail.com?subject=Pedal%20workshop">Ask about dates</a>
+      </div>
+      <div class="box">
+        <h3>Buy one, or ask anything</h3>
+        <p>For a Fuzilator, a TWOFOLD, a Samplooler, or a strange thing you'd like made, write to me. There's a person on the other end.</p>
+        <a class="btn solid" href="mailto:Dogme84@gmail.com">Email</a>
+        <a class="btn" href="https://wa.me/972539263808">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <h2>Support</h2>
+    <div class="prose">
+      <p class="lead">The code, the circuits and the manuals stay free. Patreon is how they stay that way.</p>
+      <p>If something here made you a sound you like, or taught you how a thing works, chipping in a few dollars a month pays for the parts, the boards and the time.</p>
+      <div class="actions">
+        <a class="btn solid" href="https://www.patreon.com/Seriousshit">Support on Patreon</a>
+        <a class="btn" href="https://github.com/willbearfruits">All the code on GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>Serious S.H.I.T. · made in Haifa by Yaniv Schonfeld (Willbear). Nothing is holy.</span>
+  <span><a href="https://www.patreon.com/Seriousshit">Patreon</a> · <a href="https://www.instagram.com/shitisizers/">Instagram</a> · <a href="https://www.youtube.com/@Serioushit">YouTube</a> · <a href="https://github.com/willbearfruits">GitHub</a> · <a href="mailto:Dogme84@gmail.com">Email</a></span>
+</div></footer>
+</body>
+</html>
