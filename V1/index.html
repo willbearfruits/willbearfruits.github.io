@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vessel · Serious S.H.I.T.</title>
+<meta name="description" content="The Vessel: a small instrument with a microphone, a screen, two knobs and a hand sensor. It runs one program at a time; put another on from a computer.">
+<meta property="og:title" content="Vessel">
+<meta property="og:description" content="A small instrument you can reprogram. The programs, the manuals, and how to put a new one on.">
+<meta property="og:image" content="https://willbearfruits.github.io/V1/img/vessel-side-a.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#e9e8e2; --paper:#f3f2ed; --ink:#151412; --muted:#5f5e57; --rule:#151412; --soft:#cfcdc4;
+  --accent:#c7412b;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#141412;--paper:#1c1c19;--ink:#e7e5dc;--muted:#a09e94;--rule:#e7e5dc;--soft:#3a3934}
+}
+:root[data-theme="dark"]{--bg:#141412;--paper:#1c1c19;--ink:#e7e5dc;--muted:#a09e94;--rule:#e7e5dc;--soft:#3a3934}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--sans)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:13px}
+header.top .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;min-height:48px;flex-wrap:wrap}
+header.top a{text-decoration:none}
+.brand{font-weight:600;letter-spacing:.12em}
+header.top nav{display:flex;gap:16px;flex-wrap:wrap}
+.hero{padding:32px 0 28px}
+.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.hero h1{font-family:var(--mono);font-weight:600;font-size:clamp(40px,9vw,64px);letter-spacing:.06em;line-height:1;margin:0 0 16px}
+.lead{font-size:clamp(19px,4.6vw,22px);line-height:1.45;margin:0 0 12px;max-width:30em}
+.small{color:var(--muted);font-size:15px;margin:0 0 20px}
+.board{border:1px solid var(--rule);background:#0b0b0a;margin:20px 0 0}
+.board figcaption{font-family:var(--mono);font-size:12px;color:#a09e94;padding:8px 10px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:var(--mono);font-size:14px;border:1px solid var(--rule);padding:10px 16px;text-decoration:none;background:var(--paper);color:var(--ink);display:inline-block}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+section{padding:32px 0;border-top:1px solid var(--soft)}
+h2{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px;font-weight:600}
+h2::before{content:"";display:inline-block;width:10px;height:10px;background:var(--accent);margin-right:10px;vertical-align:1px}
+h3{font-family:var(--mono);font-size:18px;margin:0 0 4px;font-weight:600}
+p{margin:0 0 14px}
+.status{font-family:var(--mono);font-size:14px;border-left:3px solid var(--accent);padding:6px 0 6px 14px;margin:0}
+dl.controls{display:grid;grid-template-columns:max-content 1fr;gap:10px 18px;margin:0}
+dl.controls dt{font-family:var(--mono);font-weight:600;font-size:15px}
+dl.controls dd{margin:0;color:var(--muted)}
+.progs{display:grid;gap:16px}
+.prog{border:1px solid var(--rule);background:var(--paper);padding:16px 16px 14px}
+.prog p{color:var(--muted);margin:0 0 10px;font-size:16px}
+.prog .rev{font-size:15px;color:var(--ink)}
+.prog .rev b{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.06em}
+.prog .links{display:flex;flex-wrap:wrap;gap:8px}
+.prog .links .btn{font-size:13px;padding:6px 11px}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--soft);padding:2px 7px;color:var(--muted);vertical-align:3px;margin-left:6px}
+.tag.on{border-color:var(--accent);color:var(--accent)}
+ol.steps{margin:0 0 18px;padding-left:1.4em}
+ol.steps li{margin:0 0 8px}
+.note{color:var(--muted);font-size:15px}
+footer{border-top:1px solid var(--rule);margin-top:16px;padding:24px 0 40px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{color:var(--ink)}
+@media (min-width:700px){.progs{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){dl.controls{grid-template-columns:1fr;gap:2px}dl.controls dd{margin-bottom:10px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">SERIOUS S.H.I.T.</a>
+  <nav>
+    <a href="#programs">Programs</a>
+    <a href="#new">New program</a>
+    <a href="#manuals">Manuals</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="kicker">Vessel · rev E · 2026</p>
+    <h1>VESSEL</h1>
+    <p class="lead">You are holding a small instrument. It has a microphone, a screen, two knobs, a tilt sensor and a sensor that feels a hand held over it.</p>
+    <p class="small">It runs one program at a time. You can put another one on from a computer in a few minutes, and put the first one back the same way.</p>
+    <div class="actions">
+      <a class="btn solid" href="#programs">The programs</a>
+      <a class="btn" href="#new">Put on a new one</a>
+    </div>
+    <figure class="board">
+      <img src="img/vessel-side-a.jpg" width="940" height="460" alt="The Vessel's face: a window for the screen, two holes for the knobs, the sensor's hole, BOOT and RST holes, the word VESSEL and a small urn">
+      <figcaption>The face. The knobs come up through the two big holes.</figcaption>
+    </figure>
+  </div>
+
+  <section id="status">
+    <h2>Status</h2>
+    <p class="status">The first Vessels were made in November 2026. The programs have run on the older board (rev C). On this board, the second knob and the hand sensor have so far been tested on a computer only. If something does not work, write: there is a person on the other end.</p>
+  </section>
+
+  <section id="controls">
+    <h2>What is on it</h2>
+    <dl class="controls">
+      <dt>Left knob</dt><dd>Turn it: what it does depends on the program. Push it: record.</dd>
+      <dt>Right knob</dt><dd>Tap it for the menu and turn it to choose. Hold it to freeze the tilt.</dd>
+      <dt>Hand sensor</dt><dd>The small hole in the middle. Hold a hand over it, from about 25 cm down to 4 cm.</dd>
+      <dt>Tilt</dt><dd>Tip it and roll it. Most programs listen to this.</dd>
+      <dt>Microphone</dt><dd>Top right, under the board.</dd>
+      <dt>USB-C</dt><dd>Power, and MIDI and a sound card for a computer, on one cable.</dd>
+      <dt>Line out</dt><dd>The 3.5 mm jack next to the USB. Line level: use powered speakers, a mixer or a headphone amp.</dd>
+      <dt>Speaker</dt><dd>Optional. It can be switched off in the menu when it feeds back into the microphone.</dd>
+      <dt>BOOT, RST</dt><dd>Two small holes on the face. Only needed to put on a new program.</dd>
+    </dl>
+  </section>
+
+  <section id="programs">
+    <h2>Programs</h2>
+    <p>A Vessel comes with the Samplooler. The others install from the Samplooler page. Your saved loops stay on the board when you change programs.</p>
+    <div class="progs">
+      <article class="prog">
+        <h3>Samplooler <span class="tag on">comes loaded</span></h3>
+        <p>A looper you play by tilting it. Hold the left knob down and make a sound; let go and it loops. Tip it forward and it plays faster, back and it plays backwards.</p>
+        <p class="rev"><b>LEFT KNOB</b> moves the tape by hand. <b>HAND</b> closes a filter: the lower the hand, the darker.</p>
+        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/docs/MANUAL.md">Manual</a></div>
+      </article>
+      <article class="prog">
+        <h3>HUFF</h3>
+        <p>Blow at the microphone and tilt for the notes: ocarina, flutes, clarinet, brass, a didgeridoo and more.</p>
+        <p class="rev"><b>LEFT KNOB</b> the octave. <b>HAND</b> a mute, like a hand over a trumpet's bell.</p>
+        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/huff/docs/MANUAL.md">Manual</a></div>
+      </article>
+      <article class="prog">
+        <h3>WRECK</h3>
+        <p>A breakcore machine that turns into a doom machine. One knob goes from a chopped, rolled break down to one chord held under a break slowed to thunder.</p>
+        <p class="rev"><b>LEFT KNOB</b> crush to the left, drive to the right. <b>HAND</b> a roll, faster the lower the hand.</p>
+        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/wreck/docs/MANUAL.md">Manual</a></div>
+      </article>
+      <article class="prog">
+        <h3>MANTRA</h3>
+        <p>A voice and a seated Buddha who sings it: chanting, overtone singing, Daisy Bell, and a wall of amps behind him. Tilt for the vowels.</p>
+        <p class="rev"><b>LEFT KNOB</b> the note, a semitone a click. <b>HAND</b> a hand over his mouth.</p>
+        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/mantra/docs/MANUAL.md">Manual</a></div>
+      </article>
+      <article class="prog">
+        <h3>BAND</h3>
+        <p>Six players on one board: drums you knock or draw on a grid, bass, lead, keys, ocarina and tuned feedback, in one key and tempo.</p>
+        <p class="rev"><b>LEFT KNOB</b> the level of the layer you play. <b>HAND</b> plays that layer: a drum roll, the bass filter, a bend.</p>
+        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/band/docs/MANUAL.md">Manual</a></div>
+      </article>
+      <article class="prog">
+        <h3>PIXEL <span class="tag">not on the install page yet</span></h3>
+        <p>A chiptune machine. Write drums, bass, chords and a lead on a grid, chain the bars into a song, and hear it on eight old sound chips.</p>
+        <p class="rev"><b>LEFT KNOB</b> the cursor, or the tempo while it plays. <b>HAND</b> a breakdown: the lead, the chords and the bass drop out.</p>
+        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/pixel/docs/MANUAL.md">Manual</a></div>
+      </article>
+      <article class="prog">
+        <h3>SING <span class="tag">not on the install page yet</span></h3>
+        <p>Sing and it tunes you, sings harmonies and a choir with you, or turns you into a vocoder. Hold record to loop it.</p>
+        <p class="rev"><b>LEFT KNOB</b> how many of you sing along. <b>HAND</b> throws your voice into the echo.</p>
+        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/sing/docs/MANUAL.md">Manual</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="new">
+    <h2>Put on a new program</h2>
+    <p>You need a computer with Chrome or Edge, and a USB-C data cable. A phone cannot do this.</p>
+    <ol class="steps">
+      <li>Hold BOOT down (a toothpick through the hole marked BOOT) while you plug in the USB cable. Then let go.</li>
+      <li>Open the page and press Install under the program you want. Pick the port it offers.</li>
+      <li>When it says done, unplug the cable and plug it in again. The page may say the device was lost; that is normal.</li>
+    </ol>
+    <div class="actions">
+      <a class="btn solid" href="https://willbearfruits.github.io/samplooler/#instruments">Install a program</a>
+      <a class="btn" href="https://willbearfruits.github.io/samplooler/#flash">Put the Samplooler back</a>
+    </div>
+    <p class="note" style="margin-top:16px">Only the program is replaced: your saved loops stay. On Linux there is also a desktop app that installs them with one click: <a href="https://github.com/willbearfruits/samplooler/tree/main/app">app/</a>, built from source for now.</p>
+    <figure class="board">
+      <img src="img/vessel-side-b.jpg" width="940" height="460" loading="lazy" alt="The Vessel's back: the same three steps printed on the board, the line out and USB-C marked, a place for an optional magnet">
+      <figcaption>The back says the same three steps.</figcaption>
+    </figure>
+  </section>
+
+  <section id="manuals">
+    <h2>Manuals and files</h2>
+    <dl class="controls">
+      <dt>Playing it</dt><dd><a href="https://github.com/willbearfruits/samplooler/blob/main/docs/MANUAL.md">The Samplooler manual</a>: every setting, MIDI, updating, what to do when something is wrong. Each program above has its own.</dd>
+      <dt>Building one</dt><dd><a href="https://github.com/willbearfruits/samplooler/blob/main/docs/BUILD.md">The build guide</a>: parts, soldering, the first power-on.</dd>
+      <dt>Source</dt><dd><a href="https://github.com/willbearfruits/samplooler">github.com/willbearfruits/samplooler</a>: the firmware, every program, the boards, the plugin.</dd>
+      <dt>Licences</dt><dd>Firmware GPL-3.0. Boards, docs and pictures CC BY-SA 4.0.</dd>
+      <dt>Help</dt><dd><a href="https://github.com/willbearfruits/samplooler/issues">GitHub issues</a>, <a href="mailto:Dogme84@gmail.com?subject=Vessel">email</a> or <a href="https://wa.me/972539263808">WhatsApp</a>. Say what the screen showed and which program it runs.</dd>
+    </dl>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>Vessel. Made in Haifa by <a href="../">Serious S.H.I.T.</a></span>
+  <span><a href="https://www.patreon.com/Seriousshit">Patreon</a> · <a href="https://www.instagram.com/shitisizers/">Instagram</a> · <a href="https://www.youtube.com/@Serioushit">YouTube</a> · <a href="https://github.com/willbearfruits">GitHub</a></span>
+</div></footer>
+</body>
+</html>
