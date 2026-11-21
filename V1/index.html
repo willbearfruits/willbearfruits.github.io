@@ -7,108 +7,170 @@
 <meta name="description" content="The Vessel: a small instrument with a microphone, a screen, two knobs and a hand sensor. It runs one program at a time; put another on from a computer.">
 <meta property="og:title" content="Vessel">
 <meta property="og:description" content="A small instrument you can reprogram. The programs, the manuals, and how to put a new one on.">
-<meta property="og:image" content="https://willbearfruits.github.io/V1/img/vessel-side-a.jpg">
+<meta property="og:image" content="https://willbearfruits.github.io/V1/img/vessel-tikkun-face.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+Hebrew:wght@400;700&display=swap">
 <style>
-:root{
-  --bg:#e9e8e2; --paper:#f3f2ed; --ink:#151412; --muted:#5f5e57; --rule:#151412; --soft:#cfcdc4;
-  --accent:#c7412b;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --sans:"IBM Plex Sans",system-ui,sans-serif;
-  color-scheme:light dark;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){--bg:#141412;--paper:#1c1c19;--ink:#e7e5dc;--muted:#a09e94;--rule:#e7e5dc;--soft:#3a3934}
-}
-:root[data-theme="dark"]{--bg:#141412;--paper:#1c1c19;--ink:#e7e5dc;--muted:#a09e94;--rule:#e7e5dc;--soft:#3a3934}
+@font-face{font-family:"Vessel Pixel";src:url(img/vessel-pixel.ttf) format("truetype");font-display:block}
+:root{--ink:#000;--paper:#fff;--px:"Vessel Pixel",ui-monospace,monospace;--rule:2px solid #000}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--sans)}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:2px}
-a:hover{color:var(--accent)}
-.wrap{max-width:860px;margin:0 auto;padding:0 16px}
-header.top{border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:13px}
-header.top .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;min-height:48px;flex-wrap:wrap}
-header.top a{text-decoration:none}
-.brand{font-weight:600;letter-spacing:.12em}
-header.top nav{display:flex;gap:16px;flex-wrap:wrap}
-.hero{padding:32px 0 28px}
-.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
-.hero h1{font-family:var(--mono);font-weight:600;font-size:clamp(40px,9vw,64px);letter-spacing:.06em;line-height:1;margin:0 0 16px}
-.lead{font-size:clamp(19px,4.6vw,22px);line-height:1.45;margin:0 0 12px;max-width:30em}
-.small{color:var(--muted);font-size:15px;margin:0 0 20px}
-.board{border:1px solid var(--rule);background:#0b0b0a;margin:20px 0 0}
-.board figcaption{font-family:var(--mono);font-size:12px;color:#a09e94;padding:8px 10px}
-.actions{display:flex;flex-wrap:wrap;gap:10px}
-.btn{font-family:var(--mono);font-size:14px;border:1px solid var(--rule);padding:10px 16px;text-decoration:none;background:var(--paper);color:var(--ink);display:inline-block}
-.btn:hover{border-color:var(--accent);color:var(--accent)}
-.btn.solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-section{padding:32px 0;border-top:1px solid var(--soft)}
-h2{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px;font-weight:600}
-h2::before{content:"";display:inline-block;width:10px;height:10px;background:var(--accent);margin-right:10px;vertical-align:1px}
-h3{font-family:var(--mono);font-size:18px;margin:0 0 4px;font-weight:600}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Noto Sans","Noto Sans Hebrew",system-ui,sans-serif}
+html[lang=he] body{font-family:"Noto Sans Hebrew","Noto Sans",system-ui,sans-serif}
+html[lang=en] [lang=he],html[lang=he] [lang=en]{display:none!important}
+img{display:block;max-width:100%}
+.px{image-rendering:pixelated;image-rendering:crisp-edges}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:2px}
+bdi{unicode-bidi:isolate}
+.wrap{max-width:880px;margin:0 auto;padding:0 18px}
+
+/* top bar */
+.top{background:#000;color:#fff;font-family:var(--px);font-size:16px;letter-spacing:.06em}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;min-height:46px;gap:14px;flex-wrap:wrap}
+.top a{text-decoration:none}
+.top nav{display:flex;gap:18px;flex-wrap:wrap}
+.top button{font:inherit;color:#000;background:#fff;border:0;padding:3px 9px;cursor:pointer}
+html[lang=he] .top nav a{font-family:"Noto Sans Hebrew",sans-serif;font-size:14px;font-weight:700;letter-spacing:0}
+
+/* hero */
+.hero{background:#000;color:#fff;position:relative;overflow:hidden;border-bottom:var(--rule)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:end;padding-top:34px}
+.hero h1{font-family:var(--px);font-weight:400;font-size:clamp(64px,13vw,128px);line-height:.9;margin:0 0 14px;letter-spacing:.02em}
+.plate{display:inline-block;font-family:var(--px);font-size:18px;border:2px solid #fff;padding:2px 10px 0;margin:0 0 18px}
+.hero .lead{font-size:clamp(18px,3.6vw,21px);margin:0 0 10px;max-width:24em}
+.hero .small{color:#fff;opacity:.85;font-size:15px;margin:0 0 26px;max-width:28em}
+.jarbox{position:relative;justify-self:end;width:100%;max-width:440px}
+html[lang=he] .jarbox{justify-self:start}
+.jar{width:100%;margin-bottom:-2px}
+.slip{position:absolute;left:-8%;right:-8%;height:12px;top:58%;background:url(img/shards-strip.png) repeat-x 37px 0/auto 100%;image-rendering:pixelated;mix-blend-mode:difference;opacity:.9}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.btn{font-family:var(--px);font-size:17px;letter-spacing:.04em;text-decoration:none;padding:9px 14px 6px;border:2px solid currentColor;display:inline-block}
+.hero .btn.solid{background:#fff;color:#000;border-color:#fff}
+html[lang=he] .btn{font-family:"Noto Sans Hebrew",sans-serif;font-weight:700;font-size:15px;letter-spacing:0;padding:8px 14px}
+.btn:hover{background:#000;color:#fff}
+.hero .btn:hover{background:#fff;color:#000}
+
+/* sections */
+section{padding:34px 0;border-bottom:var(--rule)}
+h2{display:inline-block;background:#000;color:#fff;font-family:var(--px);font-weight:400;font-size:20px;letter-spacing:.06em;padding:4px 12px 1px;margin:0 0 20px;text-transform:lowercase}
+html[lang=he] h2{font-family:"Noto Sans Hebrew",sans-serif;font-weight:700;font-size:17px;letter-spacing:0;padding:3px 12px;text-transform:none}
+h3{font-family:var(--px);font-weight:400;font-size:22px;margin:0 0 6px;letter-spacing:.03em}
 p{margin:0 0 14px}
-.status{font-family:var(--mono);font-size:14px;border-left:3px solid var(--accent);padding:6px 0 6px 14px;margin:0}
-dl.controls{display:grid;grid-template-columns:max-content 1fr;gap:10px 18px;margin:0}
-dl.controls dt{font-family:var(--mono);font-weight:600;font-size:15px}
-dl.controls dd{margin:0;color:var(--muted)}
-.progs{display:grid;gap:16px}
-.prog{border:1px solid var(--rule);background:var(--paper);padding:16px 16px 14px}
-.prog p{color:var(--muted);margin:0 0 10px;font-size:16px}
-.prog .rev{font-size:15px;color:var(--ink)}
-.prog .rev b{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.06em}
-.prog .links{display:flex;flex-wrap:wrap;gap:8px}
-.prog .links .btn{font-size:13px;padding:6px 11px}
-.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--soft);padding:2px 7px;color:var(--muted);vertical-align:3px;margin-left:6px}
-.tag.on{border-color:var(--accent);color:var(--accent)}
-ol.steps{margin:0 0 18px;padding-left:1.4em}
-ol.steps li{margin:0 0 8px}
-.note{color:var(--muted);font-size:15px}
-footer{border-top:1px solid var(--rule);margin-top:16px;padding:24px 0 40px;font-family:var(--mono);font-size:13px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
-footer a{color:var(--ink)}
-@media (min-width:700px){.progs{grid-template-columns:1fr 1fr}}
-@media (max-width:420px){dl.controls{grid-template-columns:1fr;gap:2px}dl.controls dd{margin-bottom:10px}}
+.status{border:var(--rule);padding:14px 16px;margin:0;font-size:16px}
+.status b{font-family:var(--px);font-weight:400;font-size:17px;margin-inline-end:8px}
+
+/* first minute */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s;border:var(--rule)}
+.steps li{display:grid;grid-template-columns:54px 1fr;align-items:start;border-bottom:1px solid #000;padding:12px 14px 12px 0;counter-increment:s}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);font-family:var(--px);font-size:22px;width:32px;height:32px;line-height:34px;text-align:center;background:#000;color:#fff;border-radius:50%;margin:0 11px}
+.tilts{display:flex;gap:18px;margin-top:10px;flex-wrap:wrap}
+.tilt{display:flex;align-items:center;gap:8px;font-size:15px}
+.tilt img{width:72px}
+
+/* controls */
+dl.ctl{display:grid;grid-template-columns:max-content 1fr;margin:0;border:var(--rule)}
+dl.ctl dt,dl.ctl dd{margin:0;padding:9px 14px;border-bottom:1px solid #000}
+dl.ctl dt{font-family:var(--px);font-size:18px;border-inline-end:1px solid #000;white-space:nowrap}
+dl.ctl dt:nth-last-of-type(1),dl.ctl dd:last-of-type{border-bottom:0}
+html[lang=he] dl.ctl dt{font-family:"Noto Sans Hebrew",sans-serif;font-weight:700;font-size:15px}
+
+/* programs */
+.progs{display:grid;grid-template-columns:1fr 1fr;border-top:var(--rule);border-inline-start:var(--rule)}
+.prog{border-inline-end:var(--rule);border-bottom:var(--rule);padding:16px 16px 14px;display:flex;flex-direction:column}
+.prog p{margin:0 0 10px;font-size:16px}
+.prog .rev{font-size:15px}
+.prog .rev b{font-family:var(--px);font-weight:400;font-size:16px;background:#000;color:#fff;padding:1px 5px 0;margin-inline-end:4px}
+.prog .btn{font-size:15px;padding:5px 10px 3px;align-self:flex-start;margin-top:auto}
+.tag{font-family:var(--px);font-size:14px;border:1px solid #000;padding:1px 6px 0;margin-inline-start:8px;vertical-align:3px;white-space:nowrap}
+.tag.on{background:#000;color:#fff}
+html[lang=he] .tag{font-family:"Noto Sans Hebrew",sans-serif;font-size:12px;font-weight:700}
+
+/* flash */
+ol.num{margin:0 0 18px;padding-inline-start:1.3em}
+ol.num li{margin:0 0 8px}
+.board{border:var(--rule);margin:18px 0 0;background:#000}
+.board figcaption{font-size:13px;color:#fff;padding:7px 12px}
+
+/* support */
+.promise{display:grid;grid-template-columns:1fr 200px;gap:24px;align-items:center}
+.promise .big{font-family:var(--px);font-size:clamp(26px,5vw,38px);line-height:1.05;margin:0 0 12px}
+html[lang=he] .promise .big{font-family:"Noto Sans Hebrew",sans-serif;font-weight:700}
+.shards{width:100%}
+
+footer{background:#000;color:#fff;padding:0 0 40px;font-size:14px}
+footer .strip{height:40px;background:url(img/shards-strip.png) repeat-x 0 0/auto 100%;image-rendering:pixelated;margin-bottom:22px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px}
+footer .px{font-family:var(--px);font-size:17px}
+
+@media (max-width:700px){
+  .hero .wrap{grid-template-columns:1fr}
+  .jarbox{justify-self:center!important;max-width:320px}
+  .progs{grid-template-columns:1fr}
+  .promise{grid-template-columns:1fr}
+  .promise .shards{display:none}
+  dl.ctl{grid-template-columns:1fr}
+  dl.ctl dt{border-inline-end:0;border-bottom:0;padding-bottom:0}
+}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="../">SERIOUS S.H.I.T.</a>
+  <a href="../">SERIOUS S.H.I.T.</a>
   <nav>
-    <a href="#programs">Programs</a>
-    <a href="#new">New program</a>
-    <a href="#manuals">Manuals</a>
+    <a href="#start"><span lang="en">start</span><span lang="he">מתחילים</span></a>
+    <a href="#programs"><span lang="en">programs</span><span lang="he">תוכנות</span></a>
+    <a href="#new"><span lang="en">new program</span><span lang="he">תוכנה חדשה</span></a>
+    <a href="#help"><span lang="en">help</span><span lang="he">עזרה</span></a>
+    <button id="lang" type="button" aria-label="language"><span lang="en">עברית</span><span lang="he">EN</span></button>
   </nav>
 </div></header>
 
-<main class="wrap">
-  <div class="hero">
-    <p class="kicker">Vessel · rev E · 2026</p>
-    <h1>VESSEL</h1>
-    <p class="lead">You are holding a small instrument. It has a microphone, a screen, two knobs, a tilt sensor and a sensor that feels a hand held over it.</p>
-    <p class="small">It runs one program at a time. You can put another one on from a computer in a few minutes, and put the first one back the same way.</p>
-    <div class="actions">
-      <a class="btn solid" href="#programs">The programs</a>
-      <a class="btn" href="#new">Put on a new one</a>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>VESSEL</h1>
+      <div class="plate">vessel v1</div>
+      <p class="lead" lang="en">You are holding a small instrument. It has a microphone, a screen, two knobs, a tilt sensor and a sensor that feels a hand held over it.</p>
+      <p class="lead" lang="he" dir="rtl">ביד שלך כלי נגינה קטן. יש לו מיקרופון, מסך, שני כפתורים מסתובבים, חיישן הטיה וחיישן שמרגיש יד מעליו.</p>
+      <p class="small" lang="en">It runs one program at a time. You can put another one on from a computer in a few minutes, and put the first one back the same way.</p>
+      <p class="small" lang="he" dir="rtl">הוא מריץ תוכנה אחת בכל פעם. אפשר להעלות עליו תוכנה אחרת ממחשב בכמה דקות, ולהחזיר את הראשונה באותה דרך.</p>
+      <div class="acts">
+        <a class="btn solid" href="#start"><span lang="en">first minute</span><span lang="he">הדקה הראשונה</span></a>
+        <a class="btn" href="#programs"><span lang="en">the programs</span><span lang="he">התוכנות</span></a>
+      </div>
     </div>
-    <figure class="board">
-      <img src="img/vessel-side-a.jpg" width="940" height="460" alt="The Vessel's face: a window for the screen, two holes for the knobs, the sensor's hole, BOOT and RST holes, the word VESSEL and a small urn">
-      <figcaption>The face. The knobs come up through the two big holes.</figcaption>
-    </figure>
+    <div class="jarbox"><img class="jar px" src="img/jar.png" width="280" height="230" alt=""><div class="slip" aria-hidden="true"></div></div>
   </div>
+</div>
 
+<main class="wrap">
   <section id="status">
-    <h2>Status</h2>
-    <p class="status">The first Vessels were made in November 2026. The programs have run on the older board (rev C). On this board, the second knob and the hand sensor have so far been tested on a computer only. If something does not work, write: there is a person on the other end.</p>
+    <h2><span lang="en">status</span><span lang="he">מצב</span></h2>
+    <p class="status" lang="en"><b>rev e</b>The first Vessels were made in November 2026. The programs have run on the older board (rev C). On this board, the second knob and the hand sensor have so far been tested on a computer only. If something does not work, write: there is a person on the other end.</p>
+    <p class="status" lang="he" dir="rtl"><b>rev e</b>ה-<bdi>Vessel</bdi> הראשונים נבנו בנובמבר 2026. התוכנות רצו על הלוח הקודם (<bdi>rev C</bdi>). על הלוח הזה, הכפתור השני וחיישן היד נבדקו עד עכשיו רק על מחשב. אם משהו לא עובד, כתבו: יש בן אדם בצד השני.</p>
+  </section>
+
+  <section id="start">
+    <h2><span lang="en">first minute</span><span lang="he">הדקה הראשונה</span></h2>
+    <ol class="steps" lang="en"><li><span>Plug a USB-C cable into a phone charger or a computer. The screen wakes up and says READY.</span></li><li><span>Plug the 3.5 mm line out into powered speakers, a mixer or a headphone amp. Or switch the speaker on in the menu.</span></li><li><span>Hold the left knob down and make a sound. Let go: it loops.</span></li><li><span>Tip it. Nose down plays faster, nose up plays backwards. Hold a hand over the small hole to darken it.</span></li>
+    </ol>
+    <ol class="steps" lang="he" dir="rtl"><li><span>מחברים כבל <bdi>USB-C</bdi> למטען של טלפון או למחשב. המסך נדלק וכתוב עליו <bdi>READY</bdi>.</span></li><li><span>מחברים את יציאת ה-<bdi>3.5 mm</bdi> לרמקולים מוגברים, למיקסר או למגבר אוזניות. או מדליקים את הרמקול בתפריט.</span></li><li><span>מחזיקים את הכפתור השמאלי לחוץ ומשמיעים צליל. משחררים: זה חוזר בלופ.</span></li><li><span>מטים אותו. אף למטה מנגן מהר יותר, אף למעלה מנגן אחורה. יד מעל החור הקטן מכהה את הצליל.</span></li>
+    </ol>
+    <div class="tilts">
+      <div class="tilt"><img src="img/tilt-nose-down.svg" alt=""><span lang="en">nose down: faster</span><span lang="he">אף למטה: מהר יותר</span></div>
+      <div class="tilt"><img src="img/tilt-nose-up.svg" alt=""><span lang="en">nose up: backwards</span><span lang="he">אף למעלה: אחורה</span></div>
+    </div>
   </section>
 
   <section id="controls">
-    <h2>What is on it</h2>
-    <dl class="controls">
+    <h2><span lang="en">what is on it</span><span lang="he">מה יש עליו</span></h2>
+    <figure class="board" style="margin:0 0 18px">
+      <img src="img/vessel-tikkun-face.jpg" width="1400" height="707" alt="The face of the Vessel: a broken jar in 1-bit, the screen in the middle, a knob each side, the small hand-sensor hole under the screen">
+      <figcaption><span lang="en">The face. Left knob, screen, right knob; the hand sensor is the small window under the screen.</span><span lang="he">החזית. כפתור שמאלי, מסך, כפתור ימני; חיישן היד הוא החלון הקטן מתחת למסך.</span></figcaption>
+    </figure>
+    <dl class="ctl" lang="en">
       <dt>Left knob</dt><dd>Turn it: what it does depends on the program. Push it: record.</dd>
       <dt>Right knob</dt><dd>Tap it for the menu and turn it to choose. Hold it to freeze the tilt.</dd>
       <dt>Hand sensor</dt><dd>The small hole in the middle. Hold a hand over it, from about 25 cm down to 4 cm.</dd>
@@ -119,91 +181,128 @@ footer a{color:var(--ink)}
       <dt>Speaker</dt><dd>Optional. It can be switched off in the menu when it feeds back into the microphone.</dd>
       <dt>BOOT, RST</dt><dd>Two small holes on the face. Only needed to put on a new program.</dd>
     </dl>
+    <dl class="ctl" lang="he" dir="rtl">
+      <dt>כפתור שמאלי</dt><dd>סיבוב: מה שהוא עושה תלוי בתוכנה. לחיצה: הקלטה.</dd>
+      <dt>כפתור ימני</dt><dd>נגיעה פותחת את התפריט, סיבוב בוחר. החזקה מקפיאה את ההטיה.</dd>
+      <dt>חיישן יד</dt><dd>החור הקטן באמצע. מחזיקים יד מעליו, מבערך 25 ס"מ ועד 4 ס"מ.</dd>
+      <dt>הטיה</dt><dd>מטים ומגלגלים. רוב התוכנות מקשיבות לזה.</dd>
+      <dt>מיקרופון</dt><dd>למעלה מימין, מתחת ללוח.</dd>
+      <dt><bdi>USB-C</bdi></dt><dd>חשמל, וגם <bdi>MIDI</bdi> וכרטיס קול למחשב, בכבל אחד.</dd>
+      <dt>יציאת קו</dt><dd>השקע של <bdi>3.5 mm</bdi> ליד ה-<bdi>USB</bdi>. רמת קו: רמקולים מוגברים, מיקסר או מגבר אוזניות.</dd>
+      <dt>רמקול</dt><dd>אופציונלי. אפשר לכבות אותו בתפריט כשהוא נכנס למשוב עם המיקרופון.</dd>
+      <dt><bdi>BOOT, RST</bdi></dt><dd>שני חורים קטנים בחזית. צריך אותם רק כדי להעלות תוכנה חדשה.</dd>
+    </dl>
   </section>
 
   <section id="programs">
-    <h2>Programs</h2>
-    <p>A Vessel comes with the Samplooler. The others install from the Samplooler page. Your saved loops stay on the board when you change programs.</p>
-    <div class="progs">
-      <article class="prog">
-        <h3>Samplooler <span class="tag on">comes loaded</span></h3>
-        <p>A looper you play by tilting it. Hold the left knob down and make a sound; let go and it loops. Tip it forward and it plays faster, back and it plays backwards.</p>
-        <p class="rev"><b>LEFT KNOB</b> moves the tape by hand. <b>HAND</b> closes a filter: the lower the hand, the darker.</p>
-        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/docs/MANUAL.md">Manual</a></div>
-      </article>
-      <article class="prog">
-        <h3>HUFF</h3>
-        <p>Blow at the microphone and tilt for the notes: ocarina, flutes, clarinet, brass, a didgeridoo and more.</p>
-        <p class="rev"><b>LEFT KNOB</b> the octave. <b>HAND</b> a mute, like a hand over a trumpet's bell.</p>
-        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/huff/docs/MANUAL.md">Manual</a></div>
-      </article>
-      <article class="prog">
-        <h3>WRECK</h3>
-        <p>A breakcore machine that turns into a doom machine. One knob goes from a chopped, rolled break down to one chord held under a break slowed to thunder.</p>
-        <p class="rev"><b>LEFT KNOB</b> crush to the left, drive to the right. <b>HAND</b> a roll, faster the lower the hand.</p>
-        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/wreck/docs/MANUAL.md">Manual</a></div>
-      </article>
-      <article class="prog">
-        <h3>MANTRA</h3>
-        <p>A voice and a seated Buddha who sings it: chanting, overtone singing, Daisy Bell, and a wall of amps behind him. Tilt for the vowels.</p>
-        <p class="rev"><b>LEFT KNOB</b> the note, a semitone a click. <b>HAND</b> a hand over his mouth.</p>
-        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/mantra/docs/MANUAL.md">Manual</a></div>
-      </article>
-      <article class="prog">
-        <h3>BAND</h3>
-        <p>Six players on one board: drums you knock or draw on a grid, bass, lead, keys, ocarina and tuned feedback, in one key and tempo.</p>
-        <p class="rev"><b>LEFT KNOB</b> the level of the layer you play. <b>HAND</b> plays that layer: a drum roll, the bass filter, a bend.</p>
-        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/band/docs/MANUAL.md">Manual</a></div>
-      </article>
-      <article class="prog">
-        <h3>PIXEL <span class="tag">not on the install page yet</span></h3>
-        <p>A chiptune machine. Write drums, bass, chords and a lead on a grid, chain the bars into a song, and hear it on eight old sound chips.</p>
-        <p class="rev"><b>LEFT KNOB</b> the cursor, or the tempo while it plays. <b>HAND</b> a breakdown: the lead, the chords and the bass drop out.</p>
-        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/pixel/docs/MANUAL.md">Manual</a></div>
-      </article>
-      <article class="prog">
-        <h3>SING <span class="tag">not on the install page yet</span></h3>
-        <p>Sing and it tunes you, sings harmonies and a choir with you, or turns you into a vocoder. Hold record to loop it.</p>
-        <p class="rev"><b>LEFT KNOB</b> how many of you sing along. <b>HAND</b> throws your voice into the echo.</p>
-        <div class="links"><a class="btn" href="https://github.com/willbearfruits/samplooler/blob/main/instruments/sing/docs/MANUAL.md">Manual</a></div>
-      </article>
-    </div>
+    <h2><span lang="en">programs</span><span lang="he">תוכנות</span></h2>
+    <p lang="en">A Vessel comes with the Samplooler. The others install from the Samplooler page. Your saved loops stay on the board when you change programs.</p>
+    <p lang="he" dir="rtl">ה-<bdi>Vessel</bdi> מגיע עם ה-<bdi>Samplooler</bdi>. את האחרות מתקינים מהדף של ה-<bdi>Samplooler</bdi>. הלופים השמורים נשארים על הלוח כשמחליפים תוכנה.</p>
+    <div class="progs" id="progs"></div>
   </section>
 
   <section id="new">
-    <h2>Put on a new program</h2>
-    <p>You need a computer with Chrome or Edge, and a USB-C data cable. A phone cannot do this.</p>
-    <ol class="steps">
-      <li>Hold BOOT down (a toothpick through the hole marked BOOT) while you plug in the USB cable. Then let go.</li>
-      <li>Open the page and press Install under the program you want. Pick the port it offers.</li>
-      <li>When it says done, unplug the cable and plug it in again. The page may say the device was lost; that is normal.</li>
-    </ol>
-    <div class="actions">
-      <a class="btn solid" href="https://willbearfruits.github.io/samplooler/#instruments">Install a program</a>
-      <a class="btn" href="https://willbearfruits.github.io/samplooler/#flash">Put the Samplooler back</a>
+    <h2><span lang="en">put on a new program</span><span lang="he">להעלות תוכנה חדשה</span></h2>
+    <div lang="en">
+      <p>You need a computer with Chrome or Edge, and a USB-C data cable. A phone cannot do this.</p>
+      <ol class="num">
+        <li>Hold BOOT down (a toothpick through the hole marked BOOT) while you plug in the USB cable. Then let go.</li>
+        <li>Open the page and press Install under the program you want. Pick the port it offers.</li>
+        <li>When it says done, unplug the cable and plug it in again. The page may say the device was lost; that is normal.</li>
+      </ol>
+      <p>Only the program is replaced: your saved loops stay. On Linux there is also a desktop app that installs them with one click: <a href="https://github.com/willbearfruits/samplooler/tree/main/app">app/</a>, built from source for now.</p>
     </div>
-    <p class="note" style="margin-top:16px">Only the program is replaced: your saved loops stay. On Linux there is also a desktop app that installs them with one click: <a href="https://github.com/willbearfruits/samplooler/tree/main/app">app/</a>, built from source for now.</p>
+    <div lang="he" dir="rtl">
+      <p>צריך מחשב עם <bdi>Chrome</bdi> או <bdi>Edge</bdi>, וכבל <bdi>USB-C</bdi> שמעביר נתונים. מטלפון זה לא עובד.</p>
+      <ol class="num">
+        <li>מחזיקים את <bdi>BOOT</bdi> לחוץ (קיסם דרך החור שכתוב עליו <bdi>BOOT</bdi>) בזמן שמחברים את כבל ה-<bdi>USB</bdi>. ואז משחררים.</li>
+        <li>פותחים את הדף ולוחצים <bdi>Install</bdi> מתחת לתוכנה שרוצים. בוחרים את הפורט שהוא מציע.</li>
+        <li>כשכתוב שזה הסתיים, מנתקים את הכבל ומחברים שוב. ייתכן שהדף יגיד שהמכשיר אבד; זה תקין.</li>
+      </ol>
+      <p>רק התוכנה מתחלפת: הלופים השמורים נשארים. בלינוקס יש גם אפליקציה שמתקינה בלחיצה אחת: <a href="https://github.com/willbearfruits/samplooler/tree/main/app">app/</a>, בינתיים בבנייה מקוד המקור.</p>
+    </div>
+    <div class="acts">
+      <a class="btn" style="background:#000;color:#fff" href="https://willbearfruits.github.io/samplooler/#instruments"><span lang="en">install a program</span><span lang="he">להתקין תוכנה</span></a>
+      <a class="btn" href="https://willbearfruits.github.io/samplooler/#flash"><span lang="en">put the samplooler back</span><span lang="he">להחזיר את ה-Samplooler</span></a>
+    </div>
     <figure class="board">
-      <img src="img/vessel-side-b.jpg" width="940" height="460" loading="lazy" alt="The Vessel's back: the same three steps printed on the board, the line out and USB-C marked, a place for an optional magnet">
-      <figcaption>The back says the same three steps.</figcaption>
+      <img src="img/vessel-tikkun-back.jpg" width="1400" height="702" loading="lazy" alt="The back of the board: broken pottery shards in 1-bit, and a plate with a QR code, Serious S.H.I.T., vessel rev1 2026">
+      <figcaption><span lang="en">The back of the board. The QR code brings you to this page.</span><span lang="he">הגב של הלוח. קוד ה-<bdi>QR</bdi> מביא לדף הזה.</span></figcaption>
     </figure>
   </section>
 
-  <section id="manuals">
-    <h2>Manuals and files</h2>
-    <dl class="controls">
-      <dt>Playing it</dt><dd><a href="https://github.com/willbearfruits/samplooler/blob/main/docs/MANUAL.md">The Samplooler manual</a>: every setting, MIDI, updating, what to do when something is wrong. Each program above has its own.</dd>
+  <section id="help">
+    <h2><span lang="en">help, for as long as you have it</span><span lang="he">עזרה, כל עוד הוא אצלך</span></h2>
+    <div class="promise">
+      <div lang="en">
+        <p class="big">If it breaks, I repair it or replace it. Free, for its whole life.</p>
+        <p>Write on <a href="https://www.instagram.com/shitisizers/">Instagram</a>, <a href="mailto:Dogme84@gmail.com?subject=Vessel">email</a> or <a href="https://wa.me/972539263808">WhatsApp</a>, or open a <a href="https://github.com/willbearfruits/samplooler/issues">GitHub issue</a>. Say what the screen showed and which program it runs.</p>
+      </div>
+      <div lang="he" dir="rtl">
+        <p class="big">אם הוא נשבר, אני מתקן או מחליף. בחינם, כל החיים שלו.</p>
+        <p>כתבו ב-<a href="https://www.instagram.com/shitisizers/">אינסטגרם</a>, ב<a href="mailto:Dogme84@gmail.com?subject=Vessel">מייל</a> או ב-<a href="https://wa.me/972539263808">וואטסאפ</a>, או פתחו <a href="https://github.com/willbearfruits/samplooler/issues"><bdi>issue</bdi> ב-<bdi>GitHub</bdi></a>. ספרו מה הופיע על המסך ואיזו תוכנה רצה.</p>
+      </div>
+      <img class="shards px" src="img/shards.png" width="470" height="230" alt="">
+    </div>
+  </section>
+
+  <section id="files">
+    <h2><span lang="en">manuals and files</span><span lang="he">מדריכים וקבצים</span></h2>
+    <dl class="ctl" lang="en">
+      <dt>Playing it</dt><dd><a href="https://github.com/willbearfruits/samplooler/blob/main/docs/MANUAL.md">The Samplooler manual</a>: every setting, MIDI, updating, what to do when something is wrong. Each program has its own.</dd>
       <dt>Building one</dt><dd><a href="https://github.com/willbearfruits/samplooler/blob/main/docs/BUILD.md">The build guide</a>: parts, soldering, the first power-on.</dd>
       <dt>Source</dt><dd><a href="https://github.com/willbearfruits/samplooler">github.com/willbearfruits/samplooler</a>: the firmware, every program, the boards, the plugin.</dd>
-      <dt>Licences</dt><dd>Firmware GPL-3.0. Boards, docs and pictures CC BY-SA 4.0.</dd>
-      <dt>Help</dt><dd><a href="https://github.com/willbearfruits/samplooler/issues">GitHub issues</a>, <a href="mailto:Dogme84@gmail.com?subject=Vessel">email</a> or <a href="https://wa.me/972539263808">WhatsApp</a>. Say what the screen showed and which program it runs.</dd>
+      <dt>Licences</dt><dd>Firmware GPL-3.0. Plugin AGPL-3.0. Boards, docs and pictures CC BY-SA 4.0. I got it for free, I give it for free.</dd>
+    </dl>
+    <dl class="ctl" lang="he" dir="rtl">
+      <dt>לנגן</dt><dd><a href="https://github.com/willbearfruits/samplooler/blob/main/docs/MANUAL.md">המדריך של ה-<bdi>Samplooler</bdi></a>: כל ההגדרות, <bdi>MIDI</bdi>, עדכונים, ומה לעשות כשמשהו לא עובד. לכל תוכנה יש מדריך משלה. (באנגלית)</dd>
+      <dt>לבנות</dt><dd><a href="https://github.com/willbearfruits/samplooler/blob/main/docs/BUILD.md">מדריך הבנייה</a>: חלקים, הלחמה, ההדלקה הראשונה. (באנגלית)</dd>
+      <dt>קוד מקור</dt><dd><a href="https://github.com/willbearfruits/samplooler"><bdi>github.com/willbearfruits/samplooler</bdi></a>: הקושחה, כל התוכנות, הלוחות, הפלאגין.</dd>
+      <dt>רישיונות</dt><dd>קושחה <bdi>GPL-3.0</bdi>. פלאגין <bdi>AGPL-3.0</bdi>. לוחות, מסמכים ותמונות <bdi>CC BY-SA 4.0</bdi>. קיבלתי בחינם, אני נותן בחינם.</dd>
     </dl>
   </section>
 </main>
 
-<footer><div class="wrap">
-  <span>Vessel. Made in Haifa by <a href="../">Serious S.H.I.T.</a></span>
-  <span><a href="https://www.patreon.com/Seriousshit">Patreon</a> · <a href="https://www.instagram.com/shitisizers/">Instagram</a> · <a href="https://www.youtube.com/@Serioushit">YouTube</a> · <a href="https://github.com/willbearfruits">GitHub</a></span>
-</div></footer>
+<footer>
+  <div class="strip" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="px">vessel v1 · made in haifa</span>
+    <span><a href="https://www.instagram.com/shitisizers/">Instagram</a> · <a href="https://www.youtube.com/@Serioushit">YouTube</a> · <a href="https://www.patreon.com/Seriousshit">Patreon</a> · <a href="https://github.com/willbearfruits">GitHub</a> · <a href="../">Serious S.H.I.T.</a></span>
+  </div>
+</footer>
+
+<script>
+const P=[
+ ["Samplooler",1,"A looper you play by tilting it. Hold the left knob down and make a sound; let go and it loops. Tip it forward and it plays faster, back and it plays backwards.","לופר שמנגנים בהטיה. מחזיקים את הכפתור השמאלי ומשמיעים צליל; משחררים וזה חוזר בלופ. מטים קדימה וזה מנגן מהר יותר, אחורה וזה מנגן הפוך.",
+  "moves the tape by hand.","מזיז את הסרט ביד.","closes a filter: the lower the hand, the darker.","סוגרת פילטר: ככל שהיד נמוכה יותר, הצליל כהה יותר.","docs/MANUAL.md"],
+ ["HUFF",0,"Blow at the microphone and tilt for the notes: ocarina, flutes, clarinet, brass, a didgeridoo and more.","נושפים למיקרופון ומטים כדי לבחור תווים: אוקרינה, חלילים, קלרינט, כלי נשיפה ממתכת, דיג'רידו ועוד.",
+  "the octave.","האוקטבה.","a mute, like a hand over a trumpet's bell.","עמעום, כמו יד על הפעמון של חצוצרה.","instruments/huff/docs/MANUAL.md"],
+ ["WRECK",0,"A breakcore machine that turns into a doom machine. One knob goes from a chopped, rolled break down to one chord held under a break slowed to thunder.","מכונת ברייקקור שהופכת למכונת דום. כפתור אחד עובר מברייק קצוץ ומתגלגל ועד אקורד אחד שמוחזק מתחת לברייק שהואט לרעם.",
+  "crush to the left, drive to the right.","קראש לשמאל, דרייב לימין.","a roll, faster the lower the hand.","רול, מהיר יותר ככל שהיד נמוכה.","instruments/wreck/docs/MANUAL.md"],
+ ["MANTRA",0,"A voice and a seated Buddha who sings it: chanting, overtone singing, Daisy Bell, and a wall of amps behind him. Tilt for the vowels.","קול ובודהה יושב ששר אותו: מנטרות, שירת אוברטונים, <bdi>Daisy Bell</bdi>, וקיר מגברים מאחוריו. הטיה בוחרת את התנועות.",
+  "the note, a semitone a click.","התו, חצי טון בכל קליק.","a hand over his mouth.","יד על הפה שלו.","instruments/mantra/docs/MANUAL.md"],
+ ["BAND",0,"Six players on one board: drums you knock or draw on a grid, bass, lead, keys, ocarina and tuned feedback, in one key and tempo.","שישה נגנים על לוח אחד: תופים שדופקים או מציירים על גריד, בס, ליד, קלידים, אוקרינה ומשוב מכוון, בסולם ובקצב אחד.",
+  "the level of the layer you play.","העוצמה של השכבה שמנגנים.","plays that layer: a drum roll, the bass filter, a bend.","מנגנת את השכבה הזו: רול בתופים, הפילטר של הבס, בנד.","instruments/band/docs/MANUAL.md"],
+ ["PIXEL",2,"A chiptune machine. Write drums, bass, chords and a lead on a grid, chain the bars into a song, and hear it on eight old sound chips.","מכונת צ'יפטיון. כותבים תופים, בס, אקורדים וליד על גריד, משרשרים תיבות לשיר, ושומעים את זה על שמונה שבבי סאונד ישנים.",
+  "the cursor, or the tempo while it plays.","הסמן, או הקצב בזמן שזה מנגן.","a breakdown: the lead, the chords and the bass drop out.","ברייקדאון: הליד, האקורדים והבס נושרים.","instruments/pixel/docs/MANUAL.md"],
+ ["SING",2,"Sing and it tunes you, sings harmonies and a choir with you, or turns you into a vocoder. Hold record to loop it.","שרים והוא מכוון אותך, שר איתך הרמוניות ומקהלה, או הופך אותך לווקודר. מחזיקים הקלטה כדי ללופ.",
+  "how many of you sing along.","כמה ממך שרים יחד.","throws your voice into the echo.","זורקת את הקול שלך לתוך האקו.","instruments/sing/docs/MANUAL.md"]];
+const G="https://github.com/willbearfruits/samplooler/blob/main/";
+document.getElementById('progs').innerHTML=P.map(p=>{
+  const tagE=p[1]===1?'<span class="tag on">comes loaded</span>':p[1]===2?'<span class="tag">not on the install page yet</span>':'';
+  const tagH=p[1]===1?'<span class="tag on">מגיע מותקן</span>':p[1]===2?'<span class="tag">עוד לא בדף ההתקנה</span>':'';
+  return `<article class="prog"><h3>${p[0]}<span lang="en">${tagE}</span><span lang="he">${tagH}</span></h3>
+  <p lang="en">${p[2]}</p><p lang="he" dir="rtl">${p[3]}</p>
+  <p class="rev" lang="en"><b>LEFT KNOB</b>${p[4]} <b>HAND</b>${p[6]}</p>
+  <p class="rev" lang="he" dir="rtl"><b>LEFT KNOB</b>${p[5]} <b>HAND</b>${p[7]}</p>
+  <a class="btn" href="${G}${p[8]}"><span lang="en">manual</span><span lang="he">מדריך (באנגלית)</span></a></article>`}).join('');
+const root=document.documentElement;
+function setLang(l){root.lang=l;root.dir=l==='he'?'rtl':'ltr';try{localStorage.setItem('v1-lang',l)}catch(e){}}
+let L=new URLSearchParams(location.search).get('lang');
+try{L=L||localStorage.getItem('v1-lang')}catch(e){}
+L=L||((navigator.language||'').startsWith('he')?'he':'en');
+setLang(L);
+document.getElementById('lang').onclick=()=>setLang(root.lang==='he'?'en':'he');
+</script>
 </body>
 </html>
